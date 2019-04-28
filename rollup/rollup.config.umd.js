@@ -6,7 +6,7 @@ export default Object.assign(config, {
   output: [
     {
       name: 'ReactFlexybox',
-      file: 'dist/react-data-table-component.umd.js',
+      file: 'dist/react-ajax-data-table-component.umd.js',
       format: 'umd',
       globals: {
         react: 'React',
