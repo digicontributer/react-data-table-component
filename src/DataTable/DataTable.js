@@ -151,6 +151,7 @@ class DataTable extends Component {
       keyField,
       data,
       pagination,
+      paginationAjax,
     } = this.props;
 
     const {
@@ -162,9 +163,10 @@ class DataTable extends Component {
 
     const lastIndex = currentPage * rowsPerPage;
     const firstIndex = lastIndex - rowsPerPage;
-    const sortedRows = this.sortedRows(data, sortColumn, sortDirection);
+    const sortedRows = paginationAjax ? this.sortedRows(data.slice(firstIndex, lastIndex), sortColumn, sortDirection) : this.sortedRows(data, sortColumn, sortDirection);
+    const paginatedRows = paginationAjax ? sortedRows : sortedRows.slice(firstIndex, lastIndex);
     const currentRows = pagination
-      ? sortedRows.slice(firstIndex, lastIndex)
+      ? paginatedRows
       : sortedRows;
 
     return (
